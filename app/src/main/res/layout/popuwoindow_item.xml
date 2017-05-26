@@ -11,6 +11,7 @@
         android:background="#eee"
         android:orientation="vertical" >
     <TextView
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -24,6 +25,7 @@
             android:background="#CCC8C3" >
         </View>
     <TextView
+        android:id="@+id/saveBimap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
