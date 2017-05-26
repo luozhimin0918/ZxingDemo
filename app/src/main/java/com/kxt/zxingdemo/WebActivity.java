@@ -1,8 +1,10 @@
 package com.kxt.zxingdemo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,6 +25,8 @@ import com.kxt.zxingdemo.util.ScanningImageTools;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
+import java.net.URISyntaxException;
 
 /**
  * 有问题请关注微信公众号  aikaifa
@@ -78,7 +82,7 @@ public class WebActivity extends Activity {
 				return false;
 			}
 		});
-		mWebView.loadUrl("http://template.yingtongjinfu.com/zgc/src/index.html");
+		mWebView.loadUrl("http://www.dyhjw.com/");
 	}
 
 	private void showPopupWindow(View view, String url) {
@@ -89,6 +93,24 @@ public class WebActivity extends Activity {
 			public void onClick(View v) {
 				if (EQResult == null || "".equals(EQResult))
 					return;
+				Log.e("TAG", "二维码的地址 -- " + EQResult);
+				if(EQResult.startsWith("http://weixin.qq.com/r")){
+					Intent intent = null;
+					try {
+						intent = Intent.parseUri("weixin://", Intent.URI_INTENT_SCHEME);
+						startActivity(intent);
+					} catch (URISyntaxException e) {
+						e.printStackTrace();
+					}catch (Exception e){
+						e.printStackTrace();
+						Toast.makeText(getApplicationContext(),"未安装此应用",Toast.LENGTH_SHORT).show();
+					}
+				}else{
+					Intent intent = new Intent(Intent.ACTION_VIEW);
+					intent.setData(Uri.parse(EQResult));
+					startActivity(intent);
+				}
+				popupWindow.dismiss();
 				Toast.makeText(WebActivity.this, EQResult, Toast.LENGTH_LONG).show();
 				//EQResult = "";
 				//popupWindow.dismiss();
