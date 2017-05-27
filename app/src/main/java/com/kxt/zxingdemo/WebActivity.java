@@ -52,7 +52,7 @@ public class WebActivity extends Activity {
 	private WebSettings mWebSettings;
 	private String imageUrl = "";
 	private LinearLayout top;
-	private TextView EQCodeView,SaveBimap;
+	private TextView EQCodeView,SaveBimap,popuwoindow_cancel;
 	private Bitmap bitmaps = null;
 	private String EQResult = "";
 
@@ -114,6 +114,7 @@ public class WebActivity extends Activity {
 		final PopupWindow popupWindow = new PopupWindow(contentView,LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, true);
 		EQCodeView = (TextView) contentView.findViewById(R.id.popuwoindow_eqCode);
 		SaveBimap=(TextView) contentView.findViewById(R.id.saveBimap);
+		popuwoindow_cancel=(TextView) contentView.findViewById(R.id.popuwoindow_cancel);
 		EQCodeView.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if (EQResult == null || "".equals(EQResult))
@@ -148,6 +149,12 @@ public class WebActivity extends Activity {
 					popupWindow.dismiss();
 					new SaveImage().execute(); // Android 4.0以后要使用线程来访问网络
 				}
+			}
+		});
+		popuwoindow_cancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				popupWindow.dismiss();
 			}
 		});
 		popupWindow.setBackgroundDrawable(new BitmapDrawable());

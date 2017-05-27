@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="10dp"
+        android:padding="15dp"
         android:text="收藏"
         android:textColor="#000"
         android:textSize="16sp" />
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="10dp"
+        android:padding="15dp"
         android:text="保存图片"
         android:textColor="#000"
         android:textSize="16sp" />
@@ -43,10 +43,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="10dp"
-        android:text="识别二维码"
+        android:padding="15dp"
+        android:text="识别图中二维码"
         android:textColor="#000"
         android:textSize="16sp"
         android:visibility="gone" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="#b5555555" >
+            </View>
+            <TextView
+                android:id="@+id/popuwoindow_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="取消"
+                android:textColor="#000"
+                android:textSize="16sp"
+               />
     </LinearLayout>
 </RelativeLayout>
